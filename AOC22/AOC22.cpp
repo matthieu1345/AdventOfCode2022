@@ -8,6 +8,9 @@
 #include "day1.h"
 #include "day2.h"
 #include "day3.h"
+#include "day4.h"
+#include "day5.h"
+#include "day6.h"
 using namespace std;
 
 string inputLocation = ".\\input\\";
@@ -15,8 +18,11 @@ InputReader* fileReader;
 
 int main()
 {
-    day1::Run();
-    day2::Run();
-    day3::Run();
-    return 0;
+//	day1::Run();
+//	day2::Run();
+//	day3::Run();
+//	day4::Run();
+//	day5::Run();
+	day6::Run();
+	return 0;
 }
