@@ -11,6 +11,7 @@
 #include "day4.h"
 #include "day5.h"
 #include "day6.h"
+#include "day7.h"
 using namespace std;
 
 string inputLocation = ".\\input\\";
@@ -23,6 +24,7 @@ int main()
 //	day3::Run();
 //	day4::Run();
 //	day5::Run();
-	day6::Run();
+//	day6::Run();
+	day7::Run();
 	return 0;
 }
