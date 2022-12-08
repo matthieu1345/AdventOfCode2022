@@ -19,12 +19,15 @@ InputReader* fileReader;
 
 int main()
 {
-//	day1::Run();
-//	day2::Run();
-//	day3::Run();
-//	day4::Run();
-//	day5::Run();
-//	day6::Run();
-	day7::Run();
+	string results = "";
+//	results += day1::Run();
+//	results += day2::Run();
+//	results += day3::Run();
+//	results += day4::Run();
+//	results += day5::Run();
+//	results += day6::Run();
+//	results += day7::Run();
+
+	cout << results;
 	return 0;
 }

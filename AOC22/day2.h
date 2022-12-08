@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fstream>
+#include <string>
 using namespace std;
 
 class day2
@@ -25,11 +26,13 @@ public:
 	static match CalculateResult(string elfChoice, string result);
 	static RPS getElf(string choice);
 
-	static void day2_1();
+	static string day2_1();
 
-	static void day2_2();
+	static string day2_2();
 
-	static void Run();
+	static string Run();
+
+	static void printMatch(match& input);
 
 
 };

@@ -2,6 +2,7 @@
 #include "InputReader.h"
 #include <iostream>
 #include <stack>
+#include <string>
 using namespace std;
 
 stack<char> stacks[9];
@@ -102,15 +103,16 @@ void day5::day5_SplitLine(string line, int& count, int& source, int& dest)
 	dest = stoi(line.substr(to + 2));
 }
 
-void day5::day5_1()
+string day5::day5_1()
 {
 	CreateStacks();
 
 	string line;
 	int count, source, dest;
 
-	while (fileReader->NextLine(line))
+	cout << "\033[1;91mStarting day 5_1\033[0m" << endl;
 
+	while (fileReader->NextLine(line))
 	{
 		day5_SplitLine(line, count, source, dest);
 
@@ -120,24 +122,37 @@ void day5::day5_1()
 			stacks[source - 1].pop();
 			stacks[dest - 1].push(temp);
 		}
+
+		for (int i = 0; i < 9; i++)
+		{
+			for (stack<char> j = stacks[i]; !j.empty(); j.pop())
+			{
+				cout << j.top();
+			}
+			cout << endl;
+		}
+
+		cout << "=========================" << endl;
 	}
 
-	cout << "5_1 The top elements are: ";
+	string output = "5_1 The top elements are: \033[1;96m";
 
 	for (int i = 0; i < 9; i++)
 	{
-		cout << stacks[i].top() << " ";
+		output += string( 1, stacks[i].top()) + " ";
 	}
 
-	cout << endl;
+	return output += "\033[0m\n";
 }
 
-void day5::day5_2()
+string day5::day5_2()
 {
 	CreateStacks();
 
 	string line;
 	int count, source, dest;
+
+	cout << "\033[1;91mStarting day 5_2\033[0m" << endl;
 
 	while (fileReader->NextLine(line))
 	{
@@ -155,30 +170,42 @@ void day5::day5_2()
 			stacks[dest - 1].push(temp.top());
 			temp.pop();
 		}
+
+		for (int i = 0; i < 9; i++)
+		{
+			for (stack<char> j = stacks[i]; !j.empty(); j.pop())
+			{
+				cout << j.top();
+			}
+			cout << endl;
+		}
+
+		cout << "=========================" << endl;
 	}
 
-	cout << "5_2 The top elements are: ";
+	string output = "5_2 The top elements are: \033[1;96m";
 
 	for (int i = 0; i < 9; i++)
 	{
-		cout << stacks[i].top() << " ";
+		output += string(1, stacks[i].top()) + " ";
 	}
 
-	cout << endl;
+	return output += "\033[0m\n";
 }
 
-void day5::Run()
+string day5::Run()
 {
-
+	string output = "";
 	fileReader = new InputReader();
 	fileReader->ReadFile("day5");
 
-	day5_1();
+	output += day5_1();
 
 	fileReader->restart();
 
-	day5_2();
+	output += day5_2();
 
 	delete(fileReader);
 
+	return output;
 }

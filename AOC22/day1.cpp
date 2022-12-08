@@ -1,6 +1,5 @@
 #include "day1.h"
 
-#include <string>
 #include <iostream>
 #include "InputReader.h"
 using namespace std;
@@ -10,59 +9,84 @@ void day1::day1_Shared(list<int>& maxCal)
     maxCal.sort(greater<int>());
     string line;
     int currentCal = 0;
+    int i = 0;
 
     while (fileReader->NextLine(line))
     {
         if (line.length() == 0)
         {
+            cout << "elf " << i << " summed callory count is: " << currentCal << endl;
             if (currentCal > maxCal.front())
             {
                 maxCal.push_front(currentCal);
                 maxCal.pop_back();
             }
+
+
+            cout << "current ranking: " << endl;
+            for (auto j : maxCal)
+            {
+                cout << j << endl;
+            }
+
             currentCal = 0;
+            i++;
+            cout << "elf number " << i << endl;
+
         }
         else
         {
+            cout << line << endl;
             currentCal += stoi(line);
         }
     }
 }
 
-void day1::day1_1()
+string day1::day1_1()
 {
     list<int> output(1, 0);
     day1_Shared(output);
 
-    cout << "1_1 The highest callory count is: " << output.front() << endl;
+    string out = "1_1 The highest callory count is: \033[1;96m";
+    out += to_string(output.front());
+    out += "\033[0m\n";
+    return out;
 }
 
-void day1::day1_2()
+string day1::day1_2()
 {
     list<int> output(3, 0);
     day1_Shared(output);
 
     int total = 0;
 
-    cout << "1_2 The highest callory counts are: " << endl;
+    string out = "1_2 The highest callory counts are: ";
     for (int i : output)
     {
         total += i;
-        cout << i << ", ";
+        out += to_string(i);
+        out += ", ";
     }
-    cout << endl << "for a total of: " << total << endl;
+    out += "\t\tfor a total of: \033[1;96m";
+    out += to_string(total);
+    out += "\033[0m\n";
+
+    return out;
 }
 
-void day1::Run()
+string day1::Run()
 {
+    string output;
     fileReader = new InputReader();
     fileReader->ReadFile("day1");
 
-    day1_1();
+    output = day1_1();
 
     fileReader->restart();
 
-    day1_2();
+    output += day1_2();
 
     delete(fileReader);
+
+    return output;
 }

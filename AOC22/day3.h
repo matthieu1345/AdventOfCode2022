@@ -1,11 +1,14 @@
 #pragma once
 
+#include <string>
+using namespace std;
+
 class day3
 {
 public:
 	static void initPointmap();
-	static void day3_1();
-	static void day3_2();
-	static void Run();
+	static string day3_1();
+	static string day3_2();
+	static string Run();
 };
 

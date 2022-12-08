@@ -6,19 +6,23 @@ using namespace std;
 
 map<char, int> letterScore;
 
-void day3::Run()
+string day3::Run()
 {
+    string output = "";
+
     initPointmap();
     fileReader = new InputReader();
     fileReader->ReadFile("day3");
 
-    day3_1();
+    output += day3_1();
 
     fileReader->restart();
 
-    day3_2();
+    output += day3_2();
 
     delete(fileReader);
+
+    return output;
 }
 
 void day3::initPointmap()
@@ -33,7 +37,7 @@ void day3::initPointmap()
     }
 }
 
-void day3::day3_1()
+string day3::day3_1()
 {
     string line, comp1, comp2;
     int points = 0;
@@ -50,21 +54,25 @@ void day3::day3_1()
             comp1 = line.substr(0, (line.length() / 2));
             comp2 = line.substr((line.length() / 2));
 
+            cout << "Comparing rucksacks compartments: " << comp1 << " : " << comp2 << endl;
+
             for (auto i : comp1)
             {
                 if (comp2.find(i) != string::npos)
                 {
+                    cout << "Duplicate letter " << i << " found, adding prio " << to_string(letterScore[i]) << endl;
                     points += letterScore[i];
+                    cout << "Current total: " << to_string(points) << endl;
                     break;
                 }
             }
         }
     }
 
-    cout << "3_1 The prioritys sum is: " << points << endl;
+    return "3_1 The prioritys sum is: \033[1;96m" + to_string(points) + "\033[0m\n";
 }
 
-void day3::day3_2()
+string day3::day3_2()
 {
     string line1, line2, line3;
     int points = 0;
@@ -80,16 +88,19 @@ void day3::day3_2()
         }
         else
         {
+            cout << "Comparing rucksacks: " << line1 << " : " << line2 << " : " << line3 << endl;
             for (auto i : line1)
             {
                 if (line2.find(i) != string::npos && line3.find(i) != string::npos)
                 {
+                    cout << "Tripple duplicate letter " << i << " found, adding prio " << to_string(letterScore[i]) << endl;
                     points += letterScore[i];
+                    cout << "Current total: " << to_string(points) << endl;
                     break;
                 }
             }
         }
     }
 
-    cout << "3_2 The prioritys sum is: " << points << endl;
+    return "3_2 The prioritys sum is: \033[1;96m" + to_string(points) + "\033[0m\n";
 }

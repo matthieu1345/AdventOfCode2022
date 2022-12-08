@@ -1,10 +1,9 @@
 #include "day6.h"
 #include "InputReader.h"
 #include <iostream>
-#include <string>
 using namespace std;
 
-void day6::day6_1()
+string day6::day6_1()
 {
 	string line;
 	fileReader->NextLine(line);
@@ -16,15 +15,16 @@ void day6::day6_1()
 			|| sub[1] == sub[2] || sub[1] == sub[3]
 			|| sub[2] == sub[3])
 		{
+			cout << sub[0] << " is duplicated in " << sub << endl;
 			continue;
 		}
 
-		cout << "6_1 The firs start-of-packet marker is at: " << i << " and ends at: " << i+4 << endl;
-		return;
+		return "6_1 The firs start-of-packet marker is at: \033[1;96m" + to_string(i) + "\033[0m and ends at: \033[1;96m" + to_string( i+4) + "\033[0m\n";
 	}
+	return "6_1 Failed";
 }
 
-void day6::day6_2()
+string day6::day6_2()
 {
 	string line;
 	fileReader->NextLine(line);
@@ -37,29 +37,33 @@ void day6::day6_2()
 			for (int k = j + 1; k <= sub.length(); k++)
 			{
 				if (sub[j] == sub[k])
+				{
+					cout << sub[j] << " is duplicated in " << sub << endl;
 					goto notfound;
+				}
 			}
 		}
-		cout << "6_1 The firs start-of-message marker is at: " << i << " and ends at: " << i + 14 << endl;
-		return;
-
+		return "6_2 The firs start-of-message marker is at: \033[1;96m" + to_string(i) + "\033[0m and ends at: \033[1;96m" + to_string(i + 14) + "\033[0m\n";
 	notfound:
 		continue;
 	}
+
+	return "6_2 Failed";
 }
 
-void day6::Run()
+string day6::Run()
 {
-
+	string output = "";
 	fileReader = new InputReader();
 	fileReader->ReadFile("day6");
 
-	day6_1();
+	output += day6_1();
 
 	fileReader->restart();
 
-	day6_2();
+	output += day6_2();
 
 	delete(fileReader);
 
+	return output;
 }

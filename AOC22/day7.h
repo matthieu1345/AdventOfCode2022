@@ -36,13 +36,14 @@ public:
 
 
 
-	static void Day7_2();
-	static void Day7_1();
-	static void Run();
+	static string Day7_2();
+	static string Day7_1();
+	static string Run();
 
 	static void RunCommand(string command);
 	static void CreateTree(dir& root);
 	static int CheckChildDirs(int max, dir* toCheck);
 	static int CheckSmallDir(int min, dir* toCheck);
+	static void PrintTree(int depth, dir* root);
 };
 

@@ -106,42 +106,86 @@ day2::RPS day2::getElf(string elfChoice)
     return Rock;
 }
 
-void day2::day2_1()
+string day2::day2_1()
 {
     string line;
     int points = 0;
 
     while (fileReader->NextLine(line))
     {
-        points += day2::CalculateMatch(line.substr(0, 1), line.substr(2, 1)).points;
+        match play = day2::CalculateMatch(line.substr(0, 1), line.substr(2, 1));
+        points += play.points;
+        printMatch(play);
+        cout << "Current Total points: " << points << endl;
     }
 
-    cout << "2_1 the total points are: " << points << endl;
+    return "2_1 the total points are: \033[1;96m" + to_string( points) + "\033[0m\n";
 }
 
-void day2::day2_2()
+string day2::day2_2()
 {
     string line;
     int points = 0;
 
     while (fileReader->NextLine(line))
     {
-        points += day2::CalculateResult(line.substr(0, 1), line.substr(2, 1)).points;
+        match play = day2::CalculateResult(line.substr(0, 1), line.substr(2, 1));
+        points += play.points;
+        printMatch(play);
+        cout << "Current Total points: " << points << endl;
     }
 
-    cout << "2_2 the total points are: " << points << endl;
+    return  "2_2 the total points are: \033[1;96m" + to_string(points) + "\033[0m\n";
 }
 
-void day2::Run()
+string day2::Run()
 {
+    string out = "";
     fileReader = new InputReader();
     fileReader->ReadFile("day2");
 
-    day2_1();
+    out += day2_1();
 
     fileReader->restart();
 
-    day2_2();
+    out += day2_2();
 
     delete(fileReader);
+
+    return out;
+}
+
+void day2::printMatch(match& input)
+{
+    string output = "Elf played: ";
+    switch (input.elf)
+    {
+    case Rock:
+        output += "\033[90mRock\033[0m\n";
+        break;
+    case Paper:
+        output += "\033[33mPaper\033[0m\n";
+        break;
+    case Scissor: 
+        output += "\033[91mScissor\033[0m\n";
+        break;
+    }
+
+    output += "Player played: ";
+    switch (input.player)
+    {
+    case Rock:
+        output += "\033[90mRock\033[0m\n";
+        break;
+    case Paper:
+        output += "\033[33mPaper\033[0m\n";
+        break;
+    case Scissor:
+        output += "\033[91mScissor\033[0m\n";
+        break;
+    }
+
+    output += "meaning you got \033[1;96m" + to_string(input.points) + "\033[0m points! \n";
+
+    cout << output;
 }

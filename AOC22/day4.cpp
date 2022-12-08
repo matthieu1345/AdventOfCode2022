@@ -21,7 +21,7 @@ void day4::day4_shared(int &start1, int &end1, int &start2, int &end2, string li
 	end2 = stoi(split2.substr(middle + 1));
 }
 
-void day4::day4_1()
+string day4::day4_1()
 {
 	int start1, end1, start2, end2, counter = 0;
 	string line;
@@ -33,15 +33,18 @@ void day4::day4_1()
 		if ((start1 <= start2 && end1 >= end2)
 			|| (start2 <= start1 && end2 >= end1))
 		{
+			cout << "\033[1;91m";
 			counter++;
 		}
+
+		cout << line << "\033[0m" << endl;
 	}
 
 
-	cout << "4_1 The total amount of overlapping pairs is: " << counter << endl;
+	return "4_1 The total amount of \033[1mfully\033[0m overlapping pairs is: \033[1;96m" + to_string( counter) + "\033[m\n";
 }
 
-void day4::day4_2()
+string day4::day4_2()
 {
 	int start1, end1, start2, end2, counter = 0;
 	string line;
@@ -54,23 +57,30 @@ void day4::day4_2()
 			|| (start1 <= end2 && end1 >= end2)
 			|| (start2 <= start1 && end2 >= start1)
 			|| (start2 <= end1 && end2 >= end1))
+		{
+			cout << "\033[1;91m";
 			counter++;
+		}
+
+		cout << line << "\033[0m" << endl;
 	}
 
-	cout << "4_2 The total amount of overlapping pairs is: " << counter << endl;
+	return "4_2 The total amount of \033[1mpartial\033[0m overlapping pairs is: \033[1;96m" + to_string(counter) + "\033[0m\n";
 }
 
-void day4::Run()
+string day4::Run()
 {
+	string output = "";
 	fileReader = new InputReader();
 	fileReader->ReadFile("day4");
 
-	day4_1();
+	output += day4_1();
 
 	fileReader->restart();
 
-	day4_2();
+	output += day4_2();
 
 	delete(fileReader);
 
+	return output;
 }
