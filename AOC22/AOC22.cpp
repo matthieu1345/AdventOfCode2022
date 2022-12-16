@@ -15,6 +15,8 @@
 #include "day8.h"
 #include "day9.h"
 #include "day10.h"
+#include "day11.h"
+#include "day12.h"
 using namespace std;
 
 string inputLocation = ".\\input\\";
@@ -32,7 +34,10 @@ int main()
 //	results += day7::Run();
 //	results += day8::Run();
 //	results += day9::Run();
-	results += day10::Run();
+//	results += day10::Run();
+//	results += day11::Run();
+	results += day12::Run();
 	cout << results;
+
 	return 0;
 }

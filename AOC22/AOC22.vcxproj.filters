@@ -51,6 +51,12 @@
     <ClCompile Include="day10.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="day11.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="day12.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputReader.h">
@@ -86,5 +92,14 @@
     <ClInclude Include="day10.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="day11.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="day12.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="daytemplate.txt" />
   </ItemGroup>
 </Project>

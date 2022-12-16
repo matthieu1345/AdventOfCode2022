@@ -1,0 +1,64 @@
+/* .h template
+
+#pragma once
+
+#include <list>
+#include <string>
+using namespace std;
+
+
+	static string _1();
+	static string _2();
+	static string Run();
+
+*/
+
+/* .cpp template
+#include "InputReader.h"
+
+
+string day::_1()
+{
+    string line;
+
+
+    while (fileReader->NextLine(line))
+    {
+
+    }
+
+    return "12_1 : \033[1;96m\" + \" \033[0m\n";
+}
+
+string day::_2()
+{
+    string line;
+
+
+    while (fileReader->NextLine(line))
+    {
+
+    }
+
+    return "12_2 : \033[1;96m\" + \" \033[0m\n";
+}
+
+string day::Run()
+{
+    string output;
+    fileReader = new InputReader();
+    fileReader->ReadFile("day");
+
+    output = _1();
+
+    fileReader->restart();
+
+    output += _2();
+
+    delete(fileReader);
+
+    return output;
+}
+
+
+*/
